@@ -5,8 +5,7 @@ var runner = {
         unit[test]();
       }
       catch(error) {
-        console.log('%c' + error, 'color: red');
-        console.log(error)
+        console.error(error)
       }
     });
   }
