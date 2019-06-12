@@ -8,10 +8,15 @@ var notesSpec = {
     var notes = new Notes();
     notes.add("My Ryan Gosling nail clipping collection. I need his left little toe to complete!!");
     assert.includes(notes.all, "My Ryan Gosling nail clipping collection. I need his left little toe to complete!!");
+  },
+
+  errorIfTextAreaEmpty: function() {
+    var notes = new Notes();
+    var assertion = function() {
+      notes.add("")
+    };
+    assert.throwsError(assertion);
   }
-
-
-
 
 };
 

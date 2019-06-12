@@ -24,5 +24,16 @@ var assert = {
     else{
       console.log('%c' + "Test passed, '" + firstItem + "' includes '" + secondItem + "'", 'color: green');
     }
+  },
+
+  throwsError: function(someFunction) {
+    try {
+      someFunction();
+    }
+    catch(error) {
+      console.log('%c' + "Test passed, " + someFunction + " raises error", 'color: green');
+      return;
+    }
+    throw new Error("Assertion failed: " + someFunction + " does not raise error");
   }
 };
