@@ -10,8 +10,10 @@ function showNewNote(note) {
     div.appendChild(li);
 };
 
+backToNoteList();
 makeUrlChangeShowNoteForCurrentPage();
 addNote();
+hideBackButton();
 
 function makeUrlChangeShowNoteForCurrentPage() {
   window.addEventListener("hashchange", showNoteForCurrentPage);
@@ -20,11 +22,51 @@ function makeUrlChangeShowNoteForCurrentPage() {
 function showNoteForCurrentPage() {
   hideTextArea();
   showNote(getNoteFromUrl(window.location));
+  showBackButton();
+  // div = document.getElementById('goslings-list');
+  // button = document.createElement("button");
+  // br = document.createElement("br");
+  // button.innerHTML = "Back";
+  // button.id = "back-button";
+  // div.appendChild(br);
+  // div.appendChild(button);
 };
+
+function backToNoteList() {
+  document.getElementById("back-button")
+          .addEventListener("click", function(clickEvent) {
+          clickEvent.preventDefault();
+          hideBackButton();
+          showTextArea();
+          showNotes();
+          // window.setAttribute('href', '#')
+          // getHomeURL();
+        });
+}
+
+function hideBackButton() {
+  var backButton = document.getElementById('back-button');
+  backButton.style.display = 'none';
+};
+
+function showBackButton() {
+  var backButton = document.getElementById('back-button');
+  backButton.style.display = 'block';
+};
+
+// function getHomeURL() {
+//   return window.location.href.split("#")[0];
+// }
+
 
 function hideTextArea() {
   var textBox = document.getElementById('input-container');
   textBox.style.display = 'none';
+};
+
+function showTextArea() {
+  var textBox = document.getElementById('input-container');
+  textBox.style.display = 'block';
 };
 
 function getNoteFromUrl(location) {
@@ -51,17 +93,16 @@ function errorAlert() {
   }
 }
 
+function showNotes() {
+  document.getElementById("goslings-list").innerHTML = '';
 
-
-// showNote();
-// function showNotes() {
-//   notes.all.forEach(function(note, index) {
-//     var a = document.createElement("a");
-//     a.setAttribute('href', '#' + index)
-//     a.innerHTML = note.slice(0, 20) + "...";
-//     var li = document.createElement("li");
-//     li.appendChild(a);
-//     var div = document.getElementById("goslings-list");
-//     div.appendChild(li);
-//   });
-// };
+  notes.all.forEach(function(note, index) {
+    var a = document.createElement("a");
+    a.setAttribute('href', '#' + index)
+    a.innerHTML = note.slice(0, 20) + "...";
+    var li = document.createElement("li");
+    li.appendChild(a);
+    var div = document.getElementById("goslings-list");
+    div.appendChild(li);
+  });
+};
