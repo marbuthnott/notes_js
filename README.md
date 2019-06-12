@@ -47,4 +47,3 @@ runner.runTests(exampleTests);
 Co-authored-by: Oliver Brownlow <olliebrownlow@gmail.com>
 Co-authored-by: Nicholas Barnes <n3ttl3t@gmail.com>
 Co-authored-by: Magnus Arbuthnott <magnusarbuthnott@gmail.com>
-Co-authored-by: Laurence Taylor <ltaylorapp@gmail.com>"
