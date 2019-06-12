@@ -41,3 +41,10 @@ Each test file has to include this line at the bottom to send itself to the runn
 ```
 runner.runTests(exampleTests);
 ```
+
+### Co-authoring commits
+
+Co-authored-by: Oliver Brownlow <olliebrownlow@gmail.com>
+Co-authored-by: Nicholas Barnes <n3ttl3t@gmail.com>
+Co-authored-by: Magnus Arbuthnott <magnusarbuthnott@gmail.com>
+Co-authored-by: Laurence Taylor <ltaylorapp@gmail.com>"
