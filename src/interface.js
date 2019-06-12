@@ -18,7 +18,13 @@ function makeUrlChangeShowNoteForCurrentPage() {
 };
 
 function showNoteForCurrentPage() {
+  hideTextArea();
   showNote(getNoteFromUrl(window.location));
+};
+
+function hideTextArea() {
+  var textBox = document.getElementById('input-container');
+  textBox.style.display = 'none';
 };
 
 function getNoteFromUrl(location) {
@@ -33,12 +39,19 @@ function addNote() {
   document.getElementById("submit-note")
           .addEventListener("click", function(clickEvent) {
             clickEvent.preventDefault();
-            var inputText = document.getElementById('note-text').value;
-            notes.add(inputText);
-            inputText = '';
+            notes.add(document.getElementById('note-text').value);
+            document.getElementById('note-text').value = '';
             showNewNote(notes.all[notes.all.length - 1]);
           });
 }
+
+function errorAlert() {
+  window.onerror = function() {
+    alert("Ryan desires (that) you (enter text)");
+  }
+}
+
+
 
 // showNote();
 // function showNotes() {
