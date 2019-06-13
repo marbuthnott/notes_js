@@ -7,6 +7,7 @@ function setupListeners() {
 }
 
 function renderNotePage() {
+  console.log('hashchange')
   hideTextArea();
   showNote(getNoteFromUrl(window.location));
   showBackButton();
@@ -24,6 +25,7 @@ function hideTextArea() {
 
 function makeUrlChangeShowNoteForCurrentPage() {
   window.addEventListener("hashchange", renderNotePage);
+
 };
 
 function getNoteFromUrl(location) {
@@ -31,7 +33,7 @@ function getNoteFromUrl(location) {
 };
 
 function showNote(noteIndex) {
-  document.getElementById("goslings-list").innerHTML = notes.all[noteIndex];
+  document.getElementById("goslings-list").innerHTML = notes.getList()[noteIndex];
 };
 
 function backToNoteList() {

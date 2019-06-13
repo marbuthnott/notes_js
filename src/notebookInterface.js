@@ -11,7 +11,7 @@ function renderHomePage() {
 
 function publishNotes() {
   document.getElementById("goslings-list").innerHTML = '';
-  notes.all.forEach(function(note, index) {
+  notes.getList().forEach(function(note, index) {
     var a = document.createElement("a");
     a.setAttribute('href', '#' + index)
     a.innerHTML = note.slice(0, 20) + "...";
@@ -26,6 +26,7 @@ function addNote() {
   document.getElementById("submit-note")
           .addEventListener("click", function(clickEvent) {
             clickEvent.preventDefault();
+            weatherAlert();
             notes.add(document.getElementById('note-text').value);
             document.getElementById('note-text').value = '';
             publishNotes();
@@ -45,5 +46,16 @@ function showTextArea() {
 function errorAlert() {
   window.onerror = function() {
     alert("Ryan desires (that) you (enter text)");
+  }
+}
+
+function weatherAlert() {
+  var request = new XMLHttpRequest()
+  request.open('GET', 'http://api.openweathermap.org/data/2.5/weather?q=Paris,france&appid=a3d9eb01d4de82b9b8d0849ef604dbed&units=metric')
+  request.send()
+
+  request.onload = function(){
+    var json = JSON.parse(request.responseText)
+    alert("Weather in " + json.name + " is " + json.weather[0].main + ": " + json.main.temp +"C")
   }
 }
