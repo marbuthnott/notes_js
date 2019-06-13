@@ -1,13 +1,16 @@
 var notes = new Notes();
 
-function showNewNote(note) {
+function publishNotes() {
+  document.getElementById("goslings-list").innerHTML = '';
+  notes.all.forEach(function(note, index) {
     var a = document.createElement("a");
-    a.setAttribute('href', '#' + (notes.all.length - 1))
+    a.setAttribute('href', '#' + index)
     a.innerHTML = note.slice(0, 20) + "...";
     var li = document.createElement("li");
     li.appendChild(a);
     var div = document.getElementById("goslings-list");
     div.appendChild(li);
+  });
 };
 
 backToNoteList();
@@ -23,25 +26,21 @@ function showNoteForCurrentPage() {
   hideTextArea();
   showNote(getNoteFromUrl(window.location));
   showBackButton();
-  // div = document.getElementById('goslings-list');
-  // button = document.createElement("button");
-  // br = document.createElement("br");
-  // button.innerHTML = "Back";
-  // button.id = "back-button";
-  // div.appendChild(br);
-  // div.appendChild(button);
+
 };
 
 function backToNoteList() {
   document.getElementById("back-button")
           .addEventListener("click", function(clickEvent) {
           clickEvent.preventDefault();
-          hideBackButton();
-          showTextArea();
-          showNotes();
-          // window.setAttribute('href', '#')
-          // getHomeURL();
+          renderHomePage();
         });
+}
+
+function renderHomePage() {
+  hideBackButton();
+  showTextArea();
+  publishNotes();
 }
 
 function hideBackButton() {
@@ -54,9 +53,7 @@ function showBackButton() {
   backButton.style.display = 'block';
 };
 
-// function getHomeURL() {
-//   return window.location.href.split("#")[0];
-// }
+
 
 
 function hideTextArea() {
@@ -83,7 +80,7 @@ function addNote() {
             clickEvent.preventDefault();
             notes.add(document.getElementById('note-text').value);
             document.getElementById('note-text').value = '';
-            showNewNote(notes.all[notes.all.length - 1]);
+            publishNotes();// (notes.all[notes.all.length - 1]);
           });
 }
 
@@ -92,17 +89,3 @@ function errorAlert() {
     alert("Ryan desires (that) you (enter text)");
   }
 }
-
-function showNotes() {
-  document.getElementById("goslings-list").innerHTML = '';
-
-  notes.all.forEach(function(note, index) {
-    var a = document.createElement("a");
-    a.setAttribute('href', '#' + index)
-    a.innerHTML = note.slice(0, 20) + "...";
-    var li = document.createElement("li");
-    li.appendChild(a);
-    var div = document.getElementById("goslings-list");
-    div.appendChild(li);
-  });
-};
