@@ -1,4 +1,5 @@
 var notes = new Notes();
+setupListeners();
 
 function publishNotes() {
   document.getElementById("goslings-list").innerHTML = '';
@@ -13,20 +14,20 @@ function publishNotes() {
   });
 };
 
-backToNoteList();
-makeUrlChangeShowNoteForCurrentPage();
-addNote();
-hideBackButton();
+function setupListeners() {
+  backToNoteList();
+  makeUrlChangeShowNoteForCurrentPage();
+  addNote();
+}
 
 function makeUrlChangeShowNoteForCurrentPage() {
-  window.addEventListener("hashchange", showNoteForCurrentPage);
+  window.addEventListener("hashchange", renderNotePage);
 };
 
-function showNoteForCurrentPage() {
+function renderNotePage() {
   hideTextArea();
   showNote(getNoteFromUrl(window.location));
   showBackButton();
-
 };
 
 function backToNoteList() {
@@ -53,9 +54,6 @@ function showBackButton() {
   backButton.style.display = 'block';
 };
 
-
-
-
 function hideTextArea() {
   var textBox = document.getElementById('input-container');
   textBox.style.display = 'none';
@@ -80,7 +78,7 @@ function addNote() {
             clickEvent.preventDefault();
             notes.add(document.getElementById('note-text').value);
             document.getElementById('note-text').value = '';
-            publishNotes();// (notes.all[notes.all.length - 1]);
+            publishNotes();
           });
 }
 
