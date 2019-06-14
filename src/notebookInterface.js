@@ -27,6 +27,7 @@ function addNote() {
           .addEventListener("click", function(clickEvent) {
             clickEvent.preventDefault();
             weatherAlert();
+            chuckNorrisAlert();
             notes.add(document.getElementById('note-text').value);
             document.getElementById('note-text').value = '';
             publishNotes();
@@ -46,6 +47,20 @@ function showTextArea() {
 function errorAlert() {
   window.onerror = function() {
     alert("Ryan desires (that) you (enter text)");
+  }
+}
+
+function chuckNorrisAlert() {
+  var request = new XMLHttpRequest()
+  request.open('GET', "https://matchilling-chuck-norris-jokes-v1.p.rapidapi.com/jokes/random")
+  request.setRequestHeader("X-RapidAPI-Host", "matchilling-chuck-norris-jokes-v1.p.rapidapi.com")
+  request.setRequestHeader("X-RapidAPI-Key", "09bcda2c65mshaae832d1d88008dp127cc0jsn4697b7ed001c")
+  request.setRequestHeader("accept", "application/json")
+  request.send()
+
+  request.onload = function(){
+    var json = JSON.parse(request.responseText)
+      alert(json.value)
   }
 }
 

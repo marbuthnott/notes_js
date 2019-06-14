@@ -25,7 +25,6 @@ function hideTextArea() {
 
 function makeUrlChangeShowNoteForCurrentPage() {
   window.addEventListener("hashchange", renderNotePage);
-
 };
 
 function getNoteFromUrl(location) {
