@@ -62,3 +62,7 @@ So I can see all the information in the note
 To run tests from the terminal:
 
 `open spec/specrunner.html`
+
+### SURGE.SH
+
+To use the app, navigate to http://goslings-noteapp.surge.sh/ in your favourite browser.
