@@ -1,10 +1,5 @@
 
-setupListeners();
-
-function setupListeners() {
-  backToNoteList();
-  makeUrlChangeShowNoteForCurrentPage();
-}
+ListenForClick();
 
 function renderNotePage() {
   console.log('hashchange')
@@ -23,9 +18,16 @@ function hideTextArea() {
   textBox.style.display = 'none';
 };
 
-function makeUrlChangeShowNoteForCurrentPage() {
-  window.addEventListener("hashchange", renderNotePage);
-};
+function ListenForClick() {
+   window.addEventListener("hashchange", function() {
+     if (window.location.href.includes('#home')) {
+       renderHomePage();
+     }
+     else {
+       renderNotePage();
+     }
+   });
+ }
 
 function getNoteFromUrl(location) {
   return location.hash.split("#")[1];
@@ -34,11 +36,3 @@ function getNoteFromUrl(location) {
 function showNote(noteIndex) {
   document.getElementById("goslings-list").innerHTML = notes.getList()[noteIndex];
 };
-
-function backToNoteList() {
-  document.getElementById("back-button")
-          .addEventListener("click", function(clickEvent) {
-          clickEvent.preventDefault();
-          renderHomePage();
-        });
-}
