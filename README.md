@@ -5,7 +5,7 @@ Notes App
 
 *Read this for our development process ==>* ***APPROACH.md***
 
-### INTRODUCTION
+## INTRODUCTION
 
 The aim of this project was to write a frontend, single page app using only pure JavaScript.
 
@@ -15,7 +15,7 @@ The restrictions to this project were to only use pure JavaScript, we were not a
 
 The project is provided by Makers Academy. It is the seventh weekday challenge and provides our learning base for building frontend, single page apps.
 
-### USER STORIES
+## USER STORIES
 
 ```
 As a programmer
@@ -31,7 +31,7 @@ I can see the full text of an individual note on its own page
 So I can see all the information in the note
 ```
 
-### TECH/FRAMEWORK USED
+## TECH/FRAMEWORK USED
 
 **Primary programming language:** *JavaScript*
 
@@ -41,13 +41,13 @@ So I can see all the information in the note
 
 **API:** In order to link the API we have used *Ajax*. Ajax is a set of web development techniques using many web technologies on the client side to create asynchronous web applications, allowing web applications to send an retrieve data from a server without interfering with the display and behavior of the existing page.
 
-### GETTING STARTED
+## GETTING STARTED
 
 * Fork/clone this project to your terminal using `git clone` followed by the project's url.
 * In the terminal navigate to the project's root directory using `cd notes_app`.
 * Open the project in you browser by executing `open index.html` in your terminal.
 
-### HOW TO USE THE APP
+## HOW TO USE THE APP
 
 1. Enter a note that you would like to log in the text area.
 
@@ -57,12 +57,12 @@ So I can see all the information in the note
 
 4. If you wish to view the note you've just created, click on the note and it will take you to a separate view where you can view the full note. There is a 'BACK' button to take you back to the homepage.
 
-### RUNNING TESTS
+## RUNNING TESTS
 
 To run tests from the terminal:
 
 `open spec/specrunner.html`
 
-### SURGE.SH
+## SURGE.SH
 
 To use the app, navigate to http://goslings-noteapp.surge.sh/ in your favourite browser.
